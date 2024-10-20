@@ -1,0 +1,76 @@
+#include <stdio.h>
+
+void convertFromCelsius(double temp);
+void convertFromFahrenheit(double temp);
+void convertFromKelvin(double temp);
+
+int main() {
+    double temperature;
+    char unit;
+
+    // Prompt the user for temperature input
+    printf("Enter the temperature value: ");
+    scanf("%lf", &temperature);
+
+    // Prompt the user for the unit of temperature
+    printf("Enter the unit of temperature (C for Celsius, F for Fahrenheit, K for Kelvin): ");
+    scanf(" %c", &unit);
+
+    // Convert and display the temperature based on the original unit
+    switch (unit) {
+        case 'C':
+        case 'c':
+            convertFromCelsius(temperature);
+            break;
+        case 'F':
+        case 'f':
+            convertFromFahrenheit(temperature);
+            break;
+        case 'K':
+        case 'k':
+            convertFromKelvin(temperature);
+            break;
+        default:
+            printf("Invalid unit. Please enter C for Celsius, F for Fahrenheit, or K for Kelvin.\n");
+            break;
+    }
+
+    return 0;
+}
+
+// Function to convert from Celsius to Fahrenheit and Kelvin
+void convertFromCelsius(double temp) {
+    double fahrenheit = (temp * 9.0 / 5.0) + 32.0;
+    double kelvin = temp + 273.15;
+
+    printf("Temperature in Celsius: %.2f°C\n", temp);
+    printf("Converted to Fahrenheit: %.2f°F\n", fahrenheit);
+    printf("Converted to Kelvin: %.2fK\n", kelvin);
+}
+
+// Function to convert from Fahrenheit to Celsius and Kelvin
+void convertFromFahrenheit(double temp) {
+    double celsius = (temp - 32.0) * 5.0 / 9.0;
+    double kelvin = (temp - 32.0) * 5.0 / 9.0 + 273.15;
+
+    printf("Temperature in Fahrenheit: %.2f°F\n", temp);
+    printf("Converted to Celsius: %.2f°C\n", celsius);
+    printf("Converted to Kelvin: %.2fK\n", kelvin);
+}
+
+// Function to convert from Kelvin to Celsius and Fahrenheit
+void convertFromKelvin(double temp) {
+    double celsius = temp - 273.15;
+    double fahrenheit = (temp - 273.15) * 9.0 / 5.0 + 32.0;
+
+    printf("Temperature in Kelvin: %.2fK\n", temp);
+    printf("Converted to Celsius: %.2f°C\n", celsius);
+    printf("Converted to Fahrenheit: %.2f°F\n", fahrenheit);
+}
+
+Output:
+Enter the temperature value: 27
+Enter the unit of temperature (C for Celsius, F for Fahrenheit, K for Kelvin): c
+Temperature in Celsius: 27.00°C
+Converted to Fahrenheit: 80.60°F
+Converted to Kelvin: 300.15K
